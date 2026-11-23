@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>শুভ জন্মদিন ইসরাত জাহান মীম ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #2b081c, #12030b 70%, #050103);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* ব্যাকগ্রাউন্ড ক্যানভাস (বাজি ও লাভ অ্যানিমেশন) */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* মূল কন্টেইনার */
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 105, 180, 0.35);
+            border-radius: 24px;
+            padding: 25px 18px;
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.25);
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .top-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff2a85, #ff758c);
+            padding: 5px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(255, 42, 133, 0.4);
+        }
+
+        h1.main-title {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #ffb3d9, #ffe6f2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .wife-name {
+            font-size: 28px;
+            color: #ff4da6;
+            text-shadow: 0 0 15px rgba(255, 77, 166, 0.8);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* কাউন্টডাউন টাইমার সেকশন */
+        #countdown-section {
+            margin: 20px 0;
+            padding: 18px 10px;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 77, 166, 0.4);
+        }
+
+        .countdown-label {
+            font-size: 15px;
+            color: #ffd1e8;
+            margin-bottom: 14px;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .time-box {
+            background: linear-gradient(145deg, #3d0c28, #1f0514);
+            border: 1px solid #ff4da6;
+            border-radius: 14px;
+            padding: 12px 4px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 26px;
+            font-weight: 700;
+            color: #ff80bf;
+            text-shadow: 0 0 10px rgba(255, 128, 191, 0.7);
+            line-height: 1.1;
+        }
+
+        .time-box small {
+            font-size: 12px;
+            color: #f8c8dc;
+        }
+
+        /* টাইমার শেষ হওয়ার পরের সারপ্রাইজ অংশ */
+        #birthday-reveal {
+            display: none;
+            animation: popUp 1s ease forwards;
+        }
+
+        @keyframes popUp {
+            0% { opacity: 0; transform: scale(0.85); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .photo-frame {
+            width: 175px;
+            height: 175px;
+            margin: 10px auto 18px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, #ff007f, #ffcc00, #ff007f);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
+            animation: pulseGlow 2.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 15px rgba(255, 0, 127, 0.6); }
+            to { box-shadow: 0 0 32px rgba(255, 180, 0, 0.95); }
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            background: #222;
+        }
+
+        .romantic-text {
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 3px solid #ff4da6;
+            border-right: 3px solid #ff4da6;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 15.5px;
+            line-height: 1.7;
+            color: #fff0f7;
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+        .sender-sign {
+            margin-top: 10px;
+            font-weight: 700;
+            color: #ff99cc;
+            font-size: 15px;
+        }
+
+        /* ৩টি গিফট বাটন */
+        .gift-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .gift-btn {
+            background: linear-gradient(90deg, #ff1e7a, #ff5e9c, #ff1e7a);
+            background-size: 200% auto;
+            color: #fff;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 30, 122, 0.45);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            animation: shineBtn 3s linear infinite;
+        }
+
+        @keyframes shineBtn {
+            to { background-position: 200% center; }
+        }
+
+        .gift-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* ফুলস্ক্রিন গিফট মোডাল (Gift 1, 2, 3) */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 1, 5, 0.96);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        /* Gift 1 অ্যানিমেশন ক্যানভাস (বেলুন, লাভ ও দুই পাশে বাজি) */
+        #gift1-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 105;
+        }
+
+        /* ব্যাক বাটন */
+        .back-btn {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 120;
+            background: rgba(255, 42, 133, 0.9);
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Gift 1 ছবি ও কবিতা কন্টেইনার (জুম সাপোর্টসহ) */
+        .gift1-wrapper {
+            position: relative;
+            z-index: 102;
+            max-width: 95vw;
+            max-height: 82vh;
+            overflow: auto;
+            border-radius: 16px;
+            border: 2px solid #ff4da6;
+            box-shadow: 0 0 30px rgba(255, 77, 166, 0.5);
+            touch-action: pinch-zoom; /* আঙুল দিয়ে জুম করার জন্য */
+        }
+
+        .gift1-image-box {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .gift1-image-box img {
+            width: 100%;
+            height: auto;
+            max-height: 78vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* ছবির মাঝখানে কবিতা */
+        .poem-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 86%;
+            background: rgba(0, 0, 0, 0.58);
+            backdrop-filter: blur(3px);
+            padding: 14px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 182, 193, 0.5);
+            color: #fff;
+            font-size: 14.5px;
+            line-height: 1.65;
+            text-shadow: 1px 1px 4px #000;
+        }
+
+        .zoom-hint {
+            position: fixed;
+            bottom: 14px;
+            z-index: 115;
+            font-size: 12px;
+            color: #ffb3d9;
+            background: rgba(0,0,0,0.6);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* ভিডিও কন্টেইনার (Gift 2 & Gift 3) */
+        .video-wrapper {
+            position: relative;
+            z-index: 110;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            max-height: 80vh;
+            border-radius: 16px;
+            border: 2px solid #ff4da6;
+            background: #000;
+            box-shadow: 0 0 25px rgba(255, 77, 166, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- সারাজীবন চলতে থাকা ব্যাকগ্রাউন্ড অ্যানিমেশন -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- মূল কার্ড -->
+    <div class="container">
+        <div class="top-badge">✨ বিশেষ একটি দিন ✨</div>
+        <h1 class="main-title">অগ্রিম জন্মদিনের শুভেচ্ছা প্রিয়তমা</h1>
+        <div class="wife-name">ইসরাত জাহান মীম ❤️</div>
+
+        <!-- ১. উল্টো কাউন্টডাউন টাইমার (রাত ১২টায় এটি মুছে যাবে) -->
+        <div id="countdown-section">
+            <p class="countdown-label">তোমার জন্মদিনের শুভক্ষণের বাকি আর মাত্র...</p>
+            <div class="timer-grid">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <small>দিন</small>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <small>ঘণ্টা</small>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <small>মিনিট</small>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <small>সেকেন্ড</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- ২. ঠিক রাত ১২টায় টাইমার মুছে গিয়ে এই অংশটি চালু হবে -->
+        <div id="birthday-reveal">
+            <!-- ঠিক উপরের মাঝ বরাবর ছবি -->
+            <div class="photo-frame">
+                <img src="photo 11.jpg" alt="ইসরাত জাহান মীম">
+            </div>
+
+            <!-- রোমান্টিক শুভেচ্ছা বার্তা -->
+            <div class="romantic-text">
+                <strong>শুভ জন্মদিন আমার জীবনের সবচেয়ে সুন্দর মানুষটি! 🎂❤️</strong><br>
+                আজকের এই দিনে পৃথিবীতে এসেছিলে বলেই আমার জীবনটা এত রঙিন আর ভালোবাসায় পূর্ণ। তোমার প্রতিটি হাসি আমার বেঁচে থাকার প্রেরণা। সারাজীবন এভাবেই আমার হাত ধরে পাশে থেকো। অনেক অনেক ভালোবাসি তোমায় মীম!
+                <div class="sender-sign">— ইতি, তোমার পলাশ মাহমুদ</div>
+            </div>
+
+            <!-- নিচের ৩টি গিফট বাটন -->
+            <div class="gift-buttons">
+                <button class="gift-btn" onclick="openGift('gift1')">🎁 Gift 1 (ভালোবাসার কবিতা)</button>
+                <button class="gift-btn" onclick="openGift('gift2')">🎬 Gift 2 (স্পেশাল ভিডিও ১)</button>
+                <button class="gift-btn" onclick="openGift('gift3')">🎥 Gift 3 (স্পেশাল ভিডিও ২)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= GIFT 1 MODAL ================= -->
+    <div id="gift1-modal" class="modal">
+        <button class="back-btn" onclick="closeGift()">⬅ ফিরে যান</button>
+        <canvas id="gift1-canvas"></canvas>
+
+        <div class="gift1-wrapper">
+            <div class="gift1-image-box">
+                <img src="photo 111.jpg" alt="Gift 1 Photo">
+            </div>
+        </div>
+        <div class="zoom-hint"> I Love You Soo Soo Soo Much Mim ❤️❤️❤️ </div>
+    </div>
+
+    <!-- ================= GIFT 2 MODAL ================= -->
+    <div id="gift2-modal" class="modal">
+        <button class="back-btn" onclick="closeGift()">⬅ ফিরে যান</button>
+        <div class="video-wrapper">
+            <video id="video2" controls playsinline preload="metadata">
+                <source src="video 111.mp4" type="video/mp4">
+                আপনার ব্রাউজার ভিডিওটি সাপোর্ট করছে না।
+            </video>
+        </div>
+    </div>
+
+    <!-- ================= GIFT 3 MODAL ================= -->
+    <div id="gift3-modal" class="modal">
+        <button class="back-btn" onclick="closeGift()">⬅ ফিরে যান</button>
+        <div class="video-wrapper">
+            <video id="video3" controls playsinline preload="metadata">
+                <source src="video 222.mp4" type="video/mp4">
+                আপনার ব্রাউজার ভিডিওটি সাপোর্ট করছে না।
+            </video>
+        </div>
+    </div>
+
+    <script>
+        /* =================================================================
+           ১. জন্মদিনের সময় সেট করার জায়গা (ট্রায়াল ও ফাইনাল সময়ের জন্য)
+           ================================================================= */
+        
+        // ফাইনাল জন্মদিনের তারিখ ও সময় (২৫ নভেম্বর ২০২৬, রাত ১২টা ০০ মিনিট ০০ সেকেন্ড)
+        // const TARGET_DATE = "2026-11-25T00:00:00";
+
+        // ট্রায়াল দেওয়ার জন্য নিচের লাইনটির সামনের // মুছে দিন এবং উপরে // বসিয়ে দিন:
+        const TARGET_DATE = new Date(Date.now() + 10000).toISOString(); // এটি দিলে পেইজ খোলার ১০ সেকেন্ড পর টাইমার শেষ হবে!
+
+        /* ================================================================= */
+
+        const targetTime = new Date(TARGET_DATE).getTime();
+        const countdownSection = document.getElementById("countdown-section");
+        const birthdayReveal = document.getElementById("birthday-reveal");
+        const mainTitle = document.querySelector(".main-title");
+
+        let isCelebrationStarted = false;
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = targetTime - now;
+
+            if (distance <= 0) {
+                // ঠিক ১২টায় ঘন্টা, মিনিট, সেকেন্ড ০০ হয়ে টাইমার মুছে যাবে
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+
+                clearInterval(timerInterval);
+
+                // টাইমার মুছে গিয়ে রোমান্টিক মেসেজ, ছবি ও ৩টি বাটন আসবে
+                countdownSection.style.display = "none";
+                mainTitle.innerText = "🎉 শুভ জন্মদিন আমার জান 🎉";
+                birthdayReveal.style.display = "block";
+
+                // রাত ১২টায় বাজির অ্যানিমেশন আরও জোরালো হবে
+                if (!isCelebrationStarted) {
+                    isCelebrationStarted = true;
+                    burstExtraFireworks();
+                }
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+
+        /* =================================================================
+           ২. গিফট বাটন ও মোবাইলের ব্যাক বাটন কন্ট্রোল (History API)
+           ================================================================= */
+        let gift1AnimRunning = false;
+
+        function openGift(giftId) {
+            // মোবাইলের ব্যাক বাটন কাজ করানোর জন্য হিস্ট্রিতে স্টেট যোগ করা
+            history.pushState({ modalOpen: giftId }, "", "#" + giftId);
+            showModalUI(giftId);
+        }
+
+        function showModalUI(giftId) {
+            if (giftId === 'gift1') {
+                document.getElementById('gift1-modal').classList.add('active');
+                gift1AnimRunning = true;
+                startGift1Animation();
+            } else if (giftId === 'gift2') {
+                document.getElementById('gift2-modal').classList.add('active');
+            } else if (giftId === 'gift3') {
+                document.getElementById('gift3-modal').classList.add('active');
+            }
+        }
+
+        // স্ক্রিনের ব্যাক বাটনে ক্লিক করলে
+        function closeGift() {
+            if (history.state && history.state.modalOpen) {
+                history.back(); // এটি মোবাইলের ব্যাক বাটনের মতোই কাজ করবে
+            } else {
+                hideAllModals();
+            }
+        }
+
+        // মোবাইলের হার্ডওয়্যার/নেভিগেশন ব্যাক বাটন চাপলে
+        window.addEventListener("popstate", function () {
+            hideAllModals();
+        });
+
+        function hideAllModals() {
+            document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+            gift1AnimRunning = false;
+
+            // ভিডিও চলতে থাকলে বন্ধ করে দেওয়া
+            const v2 = document.getElementById('video2');
+            const v3 = document.getElementById('video3');
+            if (v2) { v2.pause(); }
+            if (v3) { v3.pause(); }
+        }
+
+        /* =================================================================
+           ৩. মেইন পেইজের সারাজীবন চলতে থাকা লাভ ও ফায়ারওয়ার্কস অ্যানিমেশন
+           ================================================================= */
+        const bgCanvas = document.getElementById("bg-canvas");
+        const bgCtx = bgCanvas.getContext("2d");
+        let W = bgCanvas.width = window.innerWidth;
+        let H = bgCanvas.height = window.innerHeight;
+
+        window.addEventListener("resize", () => {
+            W = bgCanvas.width = window.innerWidth;
+            H = bgCanvas.height = window.innerHeight;
+            if (gift1Canvas) {
+                gift1Canvas.width = W;
+                gift1Canvas.height = H;
+            }
+        });
+
+        const floatingHearts = [];
+        const fireworks = [];
+        const particles = [];
+
+        class HeartParticle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * H;
+            }
+            reset() {
+                this.x = Math.random() * W;
+                this.y = H + 20;
+                this.size = Math.random() * 14 + 10;
+                this.speedY = Math.random() * 1.3 + 0.6;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.opacity = Math.random() * 0.6 + 0.3;
+                this.emoji = Math.random() > 0.3 ? "❤️" : "💖";
+            }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -30) this.reset();
+            }
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.font = `${this.size}px Arial`;
+                ctx.fillText(this.emoji, this.x, this.y);
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < 25; i++) floatingHearts.push(new HeartParticle());
+
+        class Firework {
+            constructor(targetX, targetY) {
+                this.x = targetX || Math.random() * W;
+                this.y = H;
+                this.targetY = targetY || Math.random() * (H * 0.45) + 40;
+                this.speed = 6;
+                this.color = `hsl(${Math.random() * 360}, 100%, 65%)`;
+            }
+            update(arr, index, partArr) {
+                this.y -= this.speed;
+                if (this.y <= this.targetY) {
+                    for (let i = 0; i < 38; i++) {
+                        partArr.push(new Spark(this.x, this.y, this.color));
+                    }
+                    arr.splice(index, 1);
+                }
+            }
+            draw(ctx) {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        class Spark {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 4.5 + 1;
+                this.vx = Math.cos(angle) * velocity;
+                this.vy = Math.sin(angle) * velocity;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.02 + 0.015;
+            }
+            update(arr, index) {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.05; // gravity
+                this.alpha -= this.decay;
+                if (this.alpha <= 0) arr.splice(index, 1);
+            }
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2.3, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function burstExtraFireworks() {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    fireworks.push(new Firework(Math.random() * W, Math.random() * (H * 0.4) + 50));
+                }, i * 350);
+            }
+        }
+
+        function animateMainBg() {
+            bgCtx.clearRect(0, 0, W, H);
+
+            floatingHearts.forEach(h => {
+                h.update();
+                h.draw(bgCtx);
+            });
+
+            // বাজি ফোটার হার (১২টার পর বেশি বাজি ফুটবে)
+            const spawnChance = isCelebrationStarted ? 0.055 : 0.02;
+            if (Math.random() < spawnChance) {
+                fireworks.push(new Firework());
+            }
+
+            for (let i = fireworks.length - 1; i >= 0; i--) {
+                fireworks[i].draw(bgCtx);
+                fireworks[i].update(fireworks, i, particles);
+            }
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                particles[i].draw(bgCtx);
+                particles[i].update(particles, i);
+            }
+
+            requestAnimationFrame(animateMainBg);
+        }
+        animateMainBg();
+
+        /* =================================================================
+           ৪. GIFT 1 স্পেশাল অ্যানিমেশন (বেলুন, লাভ ও দুই পাশে বাজি)
+           ================================================================= */
+        const gift1Canvas = document.getElementById("gift1-canvas");
+        const g1Ctx = gift1Canvas.getContext("2d");
+        gift1Canvas.width = W;
+        gift1Canvas.height = H;
+
+        const g1Items = [];
+        const g1Fireworks = [];
+        const g1Sparks = [];
+
+        class BalloonAndHeart {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * H;
+            }
+            reset() {
+                this.x = Math.random() * W;
+                this.y = H + 30;
+                this.size = Math.random() * 18 + 16;
+                this.speedY = Math.random() * 1.8 + 1;
+                this.wobble = Math.random() * Math.PI * 2;
+                const icons = ["🎈", "❤️", "💖", "🎈", "💕"];
+                this.icon = icons[Math.floor(Math.random() * icons.length)];
+            }
+            update() {
+                this.y -= this.speedY;
+                this.wobble += 0.04;
+                this.x += Math.sin(this.wobble) * 0.8;
+                if (this.y < -40) this.reset();
+            }
+            draw(ctx) {
+                ctx.font = `${this.size}px Arial`;
+                ctx.fillText(this.icon, this.x, this.y);
+            }
+        }
+
+        for (let i = 0; i < 28; i++) g1Items.push(new BalloonAndHeart());
+
+        function startGift1Animation() {
+            if (!gift1AnimRunning) return;
+            g1Ctx.clearRect(0, 0, W, H);
+
+            // নিচ থেকে উপরে বেলুন ও লাভ উঠবে
+            g1Items.forEach(item => {
+                item.update();
+                item.draw(g1Ctx);
+            });
+
+            // স্ক্রিনের দুই পাশে (বাম ও ডান পাশে) চমৎকার বাজি ফুটবে
+            if (Math.random() < 0.06) {
+                const isLeft = Math.random() < 0.5;
+                const sideX = isLeft ? (Math.random() * (W * 0.22) + 15) : (W - Math.random() * (W * 0.22) - 15);
+                const targetY = Math.random() * (H * 0.6) + 50;
+                g1Fireworks.push(new Firework(sideX, targetY));
+            }
+
+            for (let i = g1Fireworks.length - 1; i >= 0; i--) {
+                g1Fireworks[i].draw(g1Ctx);
+                g1Fireworks[i].update(g1Fireworks, i, g1Sparks);
+            }
+
+            for (let i = g1Sparks.length - 1; i >= 0; i--) {
+                g1Sparks[i].draw(g1Ctx);
+                g1Sparks[i].update(g1Sparks, i);
+            }
+
+            requestAnimationFrame(startGift1Animation);
+        }
+    </script>
+</body>
+</html>
